@@ -305,7 +305,9 @@ if __name__ == "__main__":
     if model_load_path is not None:
         # feed a sample to init the model shapes
         model(next(iter(train_loader)).to(device))
-        checkpoint = torch.load(model_load_path, map_location=device)
+        checkpoint = torch.load(
+            model_load_path, map_location=device, weights_only=False
+        )
         model.load_state_dict(checkpoint["model_state_dict"])
         optimizer.load_state_dict(checkpoint["optimizer_state_dict"])
         epoch = checkpoint["epoch"]

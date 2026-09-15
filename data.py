@@ -31,14 +31,17 @@ class CommonNoCDataset(Dataset):
         ):
             print(f"Caching subset for limit {limit}")
             # load up list of files
+            # These paper artifacts contain trusted PyG objects, not only tensor
+            # weights. PyTorch 2.6 changed torch.load's default to
+            # weights_only=True, so opt in to full deserialization explicitly.
             all_train_filenames = torch.load(
-                f"{dataset_folder}/{mode}_{N}/list_objects.pt"
+                f"{dataset_folder}/{mode}_{N}/list_objects.pt", weights_only=False
             )
 
             train_filenames = []
             for filename in tqdm.tqdm(all_train_filenames):
                 file_path = f"{self.dataset_folder}/{self.mode}_{self.N}/{filename}"
-                sample = torch.load(file_path)
+                sample = torch.load(file_path, weights_only=False)
                 if sample.y <= self.limit:
                     train_filenames.append(filename)
 
@@ -49,7 +52,8 @@ class CommonNoCDataset(Dataset):
             )
 
         self.train_filenames = torch.load(
-            f"{dataset_folder}/{mode}_{N}/train_filenames_{limit}.pt"
+            f"{dataset_folder}/{mode}_{N}/train_filenames_{limit}.pt",
+            weights_only=False,
         )
         self.train_filenames = self.train_filenames[
             : int(ratio_data * len(self.train_filenames))
@@ -64,7 +68,7 @@ class CommonNoCDataset(Dataset):
         file_path = (
             f"{self.dataset_folder}/{self.mode}_{self.N}/{self.train_filenames[idx]}"
         )
-        sample = torch.load(file_path)
+        sample = torch.load(file_path, weights_only=False)
         return sample
 
 # TODO: i think that the port id mappings of t and pi should be completely 
