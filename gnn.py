@@ -602,10 +602,10 @@ class BFT0Grapher:
             'cat test.log | grep "Attempted" | cut -d" " -f1,3 | sed "s/Time//" | sed "s/://" | sed "s/packetid=//" | sort -t" " -k2 -V | sed "s/ /,/" > attempt.log'
         )
         os.system(
-            'cat test.log | grep "Sent" | cut -d" " -f1,9 | sed "s/Time//" | sed "s/://" | sed "s/\(.*\),/\1/" | sed "s/packetid=//" | sort -t" " -k2 -V | sed "s/ /,/" > sentq.log'
+            r'cat test.log | grep "Sent" | cut -d" " -f1,9 | sed "s/Time//" | sed "s/://" | sed "s/\(.*\),/\1/" | sed "s/packetid=//" | sort -t" " -k2 -V | sed "s/ /,/" > sentq.log'
         )
         os.system(
-            'cat test.log | grep "Received" | cut -d" " -f1,7 | sed "s/Time//" | sed "s/://" | sed "s/\(.*\),/\1/" | sed "s/data=//" | sort -t" " -k2 -V | sed "s/ /,/" > recvq.log'
+            r'cat test.log | grep "Received" | cut -d" " -f1,7 | sed "s/Time//" | sed "s/://" | sed "s/\(.*\),/\1/" | sed "s/data=//" | sort -t" " -k2 -V | sed "s/ /,/" > recvq.log'
         )
         os.system('paste -d"," attempt.log sentq.log recvq.log > latency.log')
         os.system(
@@ -928,10 +928,10 @@ class BFT3Grapher:
             'cat test.log | grep "Attempted" | cut -d" " -f1,3 | sed "s/Time//" | sed "s/://" | sed "s/packetid=//" | sort -t" " -k2 -V | sed "s/ /,/" > attempt.log'
         )
         os.system(
-            'cat test.log | grep "Sent" | cut -d" " -f1,9 | sed "s/Time//" | sed "s/://" | sed "s/\(.*\),/\1/" | sed "s/packetid=//" | sort -t" " -k2 -V | sed "s/ /,/" > sentq.log'
+            r'cat test.log | grep "Sent" | cut -d" " -f1,9 | sed "s/Time//" | sed "s/://" | sed "s/\(.*\),/\1/" | sed "s/packetid=//" | sort -t" " -k2 -V | sed "s/ /,/" > sentq.log'
         )
         os.system(
-            'cat test.log | grep "Received" | cut -d" " -f1,7 | sed "s/Time//" | sed "s/://" | sed "s/\(.*\),/\1/" | sed "s/data=//" | sort -t" " -k2 -V | sed "s/ /,/" > recvq.log'
+            r'cat test.log | grep "Received" | cut -d" " -f1,7 | sed "s/Time//" | sed "s/://" | sed "s/\(.*\),/\1/" | sed "s/data=//" | sort -t" " -k2 -V | sed "s/ /,/" > recvq.log'
         )
         os.system('paste -d"," attempt.log sentq.log recvq.log > latency.log')
         os.system(
