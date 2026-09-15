@@ -1,0 +1,4 @@
+datasets/train_7.pt filter=lfs diff=lfs merge=lfs -text
+datasets/val_7.pt filter=lfs diff=lfs merge=lfs -text
+datasets/test_7.pt filter=lfs diff=lfs merge=lfs -text
+datasets filter=lfs diff=lfs merge=lfs -text
