@@ -154,13 +154,12 @@ python3 -m pip install -r requirements.txt
 ```
 
 
-# Scratch -- Ignore
+## Historical Benchmark Notes
 
+The following raw measurements use the saved `hml_all_sizes` models. The large and medium models were trained with these commands:
 
-
-the following results are with the saved model for "hml_all_sizes" which was trained with following args:
-large:`python train.py --N 3 4 5 6 7 --model_type graph_sage_class_reg --dataset_folder /home/gsmalik/work/common_noc/datasets --limit 1000 --num_layers 10 --emb_size 256 --batch_size 64 --lr 0.0000005`
-medium:`python train.py --N 3 4 5 6 7 --model_type graph_sage_class_reg --dataset_folder /home/gsmalik/work/common_noc/datasets --limit 1000 --num_layers 15 --emb_size 128 --batch_size 64 --lr 0.0000005`
+- Large: `python train.py --N 3 4 5 6 7 --model_type graph_sage_class_reg --dataset_folder datasets --limit 1000 --num_layers 10 --emb_size 256 --batch_size 64 --lr 0.0000005`
+- Medium: `python train.py --N 3 4 5 6 7 --model_type graph_sage_class_reg --dataset_folder datasets --limit 1000 --num_layers 15 --emb_size 128 --batch_size 64 --lr 0.0000005`
 
 eval_gnn (large size),  gpu
 

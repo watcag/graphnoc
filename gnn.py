@@ -288,7 +288,7 @@ class HopliteGrapher:
             applied to all traces. 
         """
         # read traffic trace file
-        df = pd.read_csv(trace_file, sep=",\s+", engine="python")
+        df = pd.read_csv(trace_file, sep=r",\s+", engine="python")
 
         # each trace in the application is represented as node between the source
         # PE and destination PE. add these nodes below.
@@ -519,7 +519,7 @@ class BFT0Grapher:
             else:
                 df = pd.read_csv(
                     f"{self.bft_path}/bench/{trace}/{N}/autogen_{src}.trace",
-                    sep=",\s+",
+                    sep=r",\s+",
                     engine="python",
                 )
 
@@ -847,7 +847,7 @@ class BFT3Grapher:
             else:
                 df = pd.read_csv(
                     f"{self.bft_path}/bench/{trace}/{N}/autogen_{src}.trace",
-                    sep=",\s+",
+                    sep=r",\s+",
                     engine="python",
                 )
 

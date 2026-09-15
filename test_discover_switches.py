@@ -130,7 +130,7 @@ class MLE:
             self.update(samples, fitness)
 
         temp_qor_tool = hoplite_ml_qor.pyQoR(self.qor_clib_path)
-        df = pd.read_csv(self.trace_name, sep=",\s+", engine="python")
+        df = pd.read_csv(self.trace_name, sep=r",\s+", engine="python")
         temp_qor_tool.analyze_network(
             x=self.best,
             N=self.N,
@@ -232,7 +232,7 @@ class MLE:
             Updated counter of time spent analyzing candidates in `samples`.
         """
         results = []
-        df = pd.read_csv(self.trace_name, sep=",\s+", engine="python")
+        df = pd.read_csv(self.trace_name, sep=r",\s+", engine="python")
 
         # init multiprocessing
         proc_list = []  # to hold `Process` processes

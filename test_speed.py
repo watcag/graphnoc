@@ -16,10 +16,10 @@ def convert_graph_to_df(data):
     # the graph already should have file name which will give us
     # info about individual src, dst trace pair. also, the graph
     # has switch modes which will give us info about switches.
-    # so we already have swtches (from data.switch) and traces
+    # so we already have switches (from data.switch) and traces
     # src dst (from data.filename). we only need rates now, which
     # we can get from data.x/100 (confirm the 100 part)
-    df = pd.read_csv(data.trace_name, sep=",\s+", engine="python")
+    df = pd.read_csv(data.trace_name, sep=r",\s+", engine="python")
     df["R"] = [data["trace"].x[0] / 100] * len(df.index)
 
     # TODO (@gsmalik) add a node or channel to 'trace' to capture different
@@ -59,7 +59,7 @@ def benchmark_qor(dataloader, batch_size, qor_clib_path):
             proc = Process(target=list_qor_func[i], args=(switch_modes, N, df, 1,1))
             proc_list.append(proc)
 
-        # now we stsrt our counter
+        # now we start our counter
         time_start = time.time()
 
         # now we launch each process
@@ -73,7 +73,7 @@ def benchmark_qor(dataloader, batch_size, qor_clib_path):
         # now we get time end
         time_end = time.time()
 
-        # now we increment totoal time
+        # now we increment total time
         total_time += time_end - time_start
 
         pbar.set_postfix(
@@ -101,7 +101,7 @@ def benchmark_gnn(gnn_model, dataloader, device):
         gnn_model(samples)
         time_end = time.time()
 
-        # now we increment totoal time
+        # now we increment total time
         total_time += time_end - time_start
         pbar.set_postfix(
             {
